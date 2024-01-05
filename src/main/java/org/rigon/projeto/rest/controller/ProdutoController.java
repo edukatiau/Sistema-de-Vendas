@@ -1,5 +1,6 @@
 package org.rigon.projeto.rest.controller;
 
+import jakarta.validation.Valid;
 import org.rigon.projeto.domain.entity.Produto;
 import org.rigon.projeto.domain.repository.ProdutoRepository;
 import org.springframework.data.domain.Example;
@@ -21,7 +22,7 @@ public class ProdutoController {
     //Cadastrar produto
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Produto saveProduto(@RequestBody Produto produto){
+    public Produto saveProduto(@RequestBody @Valid Produto produto){
         return produtoRepository.save(produto);
     }
 
@@ -51,7 +52,7 @@ public class ProdutoController {
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateProduto(@PathVariable Integer id,
-                              @RequestBody Produto produto){
+                              @RequestBody @Valid Produto produto){
         produtoRepository.findById(id)
                 .map(produtoExistente -> {
                     produto.setId(produtoExistente.getId());

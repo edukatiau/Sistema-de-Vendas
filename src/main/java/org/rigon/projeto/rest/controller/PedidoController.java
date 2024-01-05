@@ -1,5 +1,6 @@
 package org.rigon.projeto.rest.controller;
 
+import jakarta.validation.Valid;
 import org.rigon.projeto.domain.entity.ItemPedido;
 import org.rigon.projeto.domain.entity.Pedido;
 import org.rigon.projeto.domain.enums.StatusPedido;
@@ -28,13 +29,15 @@ public class PedidoController {
         this.pedidoService = pedidoService;
     }
 
+    //Cadastrar pedido
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Integer save(@RequestBody PedidoDTO pedidoDTO){
+    public Integer save(@RequestBody @Valid PedidoDTO pedidoDTO){
         Pedido pedido = pedidoService.salvar(pedidoDTO);
         return pedido.getId();
     }
 
+    //Buscar pedido por ID
     @GetMapping("{id}")
     public InformacoesPedidoDTO getById(@PathVariable Integer id){
         return pedidoService

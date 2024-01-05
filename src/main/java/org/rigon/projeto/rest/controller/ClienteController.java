@@ -1,5 +1,6 @@
 package org.rigon.projeto.rest.controller;
 
+import jakarta.validation.Valid;
 import org.rigon.projeto.domain.entity.Cliente;
 import org.rigon.projeto.domain.repository.ClienteRepository;
 import org.springframework.data.domain.Example;
@@ -33,7 +34,7 @@ public class ClienteController {
     //Cadastrar cliente
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente saveCliente(@RequestBody Cliente cliente){
+    public Cliente saveCliente(@RequestBody @Valid Cliente cliente){
         return clienteRepository.save(cliente);
     }
 
@@ -54,7 +55,7 @@ public class ClienteController {
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateCliente(@PathVariable Integer id,
-                              @RequestBody Cliente cliente){
+                              @RequestBody @Valid Cliente cliente){
 
         clienteRepository.findById(id)
                         .map(clienteExistente -> {
