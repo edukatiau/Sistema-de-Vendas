@@ -8,7 +8,7 @@ Projeto desenvolvido com o curso de Spring Boot da Udemy
 
 * [Java](https://www.oracle.com/br/java/) - Linguaguem utilizada
 * [Spring Boot](https://spring.io) - Framework utilizado
-* [Maven](https://maven.apache.org/) - Usada para gerar RSS
+* [Maven](https://maven.apache.org/) - Usada para gerenciar o projeto
 
 
 ## 🖇️ Colaborando
